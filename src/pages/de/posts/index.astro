@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import FeatureLayout from "@layouts/FeatureLayout.astro";
+
+const posts = await getCollection("blog");
+---
+
+<FeatureLayout>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</FeatureLayout>
